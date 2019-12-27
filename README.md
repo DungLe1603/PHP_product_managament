@@ -12,4 +12,5 @@
 ```
 
 
-# About PR2, please follow https://www.php-fig.org/psr/psr-2/
+# About PR2, please follow
+https://www.php-fig.org/psr/psr-2/
