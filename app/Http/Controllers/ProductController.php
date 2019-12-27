@@ -26,4 +26,23 @@ class ProductController extends Controller
         Product::destroy($id);
         return redirect()->back();
     }
+
+    public function create()
+    {
+        $category = Category::all();
+        return view('addproduct',compact('category'));
+    }
+
+    public function store(Request $request)
+    {
+        $product = Product::create($request->all());
+        foreach ($request->images as $image) {
+            $filename = $image->storeAs('public/images');
+            Image::create([
+                'id_product' => $product->id,
+                'name' => $filename
+            ]);
+        }
+        return redirect()->back();
+    }
 }
