@@ -10,20 +10,18 @@ use App\User;
 class UserController extends Controller
 {
     public function show()
-    {   
+    {
         return view('login');
     }
 
     public function login(LoginRequest $request)
     {
         $dataUserLogin = ['email' => $request->email, 'password' => $request->password];
-        // dd($dataUserLogin);
         if (Auth::attempt($dataUserLogin)) {
-            dd('thanh cong');
+            return redirect()->route('showProducts');
         } else {
-            dd('that bai');
+            return redirect()->back();
         }
-        
     }
 
     public function logout()

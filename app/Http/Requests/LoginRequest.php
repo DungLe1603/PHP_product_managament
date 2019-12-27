@@ -25,18 +25,18 @@ class LoginRequest extends FormRequest
     {
         return [
             'email'=>'email|required|email',
-            'password' => 'required|min:5|max:15',            
+            'password' => 'required|min:5|max:15',
         ];
     }
 
     public function messages()
     {
-        return [            
+        return [
             'email.required' => 'Bạn phải nhập Email.',
             'email.email' => 'Email không đúng định dạng.',
             'password.required' => 'Bạn phải nhập Mật khẩu.',
             'password.min' => 'Mật khẩu phải chứa ít nhất 5 ký tự.',
             'password.max'=>'mật khẩu ko quá 15 ký tự.',
-        ]; 
+        ];
     }
 }

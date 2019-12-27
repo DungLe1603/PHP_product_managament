@@ -17,7 +17,7 @@ class CheckLogout
     {
         if (Auth::guest()) {
             # code...
-            return redirect()->route('named_route');
+            return redirect()->route('login');
         }
         return $next($request);
     }
