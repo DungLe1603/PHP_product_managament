@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Http\Requests\AddProductRequest;
 use App\Category;
 use App\Image;
 
@@ -30,19 +31,19 @@ class ProductController extends Controller
     public function create()
     {
         $category = Category::all();
-        return view('addproduct',compact('category'));
+        return view('addproduct', compact('category'));
     }
 
     public function store(Request $request)
     {
         $product = Product::create($request->all());
         foreach ($request->images as $image) {
-            $filename = $image->storeAs('public/images');
+            $image->storeAs('public/images', $image->getClientOriginalName());
             Image::create([
-                'id_product' => $product->id,
-                'name' => $filename
+                'product_id' => $product->id,
+                'name' => $image->getClientOriginalName()
             ]);
         }
-        return redirect()->back();
+        return redirect()->route('showProduct');
     }
 }
