@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/','UserController@show');
+Route::post('/','UserController@login');
+Route::get('logout','UserController@logout');
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'ProductController@show')->name('showProduct');
     // Route::get('/detail/{id}', 'ProductController@detail')->name('detail-product');
