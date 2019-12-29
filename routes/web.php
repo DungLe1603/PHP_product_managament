@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/show', 'ProductController@show')->name('showProduct');
+    Route::get('/product/{id}', 'ProductController@detail');
 });
