@@ -11,13 +11,11 @@ class ProductController extends Controller
 {
     public function show()
     {
-        $products = Product::All()->toArray();
-        $categories = Category::All()->toArray();
-        $images = Image::All()->toArray();
+        $products = Product::All();
+        $categories = Category::All();
+        $images = Image::All();
         return view('show', compact('products', 'categories', 'images'));
     }
 
-    public function detail()
-    {
-    }
+    public function detail(){}
 }
