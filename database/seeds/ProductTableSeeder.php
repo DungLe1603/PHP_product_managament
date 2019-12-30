@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoryTableSeeder extends Seeder
+class ProductTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,28 +11,28 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        DB::table('products')->insert([
             [
-                'id' => 1,
-                'name' => 'samsung',
+                'name' => 'iphone5',
+                'id_category' => 3,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ],
             [
-                'id' => 2,
-                'name' => 'oppo',
+                'name' => 'oppo f1',
+                'id_category' => 2,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ],
             [
-                'id' => 3,
-                'name' => 'apple',
+                'name' => 'lumia520',
+                'id_category' => 4,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ],
             [
-                'id' => 4,
-                'name' => 'nokia',
+                'name' => 'node6',
+                'id_category' => '1',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ]
