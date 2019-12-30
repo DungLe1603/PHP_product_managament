@@ -19,7 +19,9 @@
 			<td> {{ $product->id }}</td>
 			<td> {{ $product->name }}</td>
 			<td> {{ $product->category->name }}</td>
-			<td> {{ $product->image }}</td>
+			<td> 
+				<a href="{{ Route('detail-product',$product->id) }}"><i class="fas fa-eye"></i></a>
+			</td>
 			<td><a href=""><i class="fas fa-edit"></i></a></td>
 			<td><a href="{{ route('delete-product',$product->id ) }}"
 					onclick="return confirm('bạn chắc chắn muốn xóa')"><i class="fas fa-trash-alt"></i></a></td>
