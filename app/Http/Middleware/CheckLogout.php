@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class CheckLogout
 {
@@ -16,7 +17,6 @@ class CheckLogout
     public function handle($request, Closure $next)
     {
         if (Auth::guest()) {
-            # code...
             return redirect()->route('login');
         }
         return $next($request);

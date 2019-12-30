@@ -18,15 +18,15 @@ class UserController extends Controller
     {
         $dataUserLogin = ['email' => $request->email, 'password' => $request->password];
         if (Auth::attempt($dataUserLogin)) {
-            return redirect()->route('showProducts');
+            return redirect()->route('showProduct');
         } else {
-            return redirect()->back();
+            return redirect()->route('login');
         }
     }
 
     public function logout()
     {
         Auth::logout();
-        return back();
+        return redirect()->route('login');
     }
 }

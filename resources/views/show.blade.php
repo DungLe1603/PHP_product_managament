@@ -26,4 +26,6 @@
 	</tbody>
 </table>
 <a href="{{ route('add-product') }}" class="btn btn-outline-primary">Create</a>
+<div class="row"><a href="{{ route('logout') }}"> logout</a></div>
+
 @endsection

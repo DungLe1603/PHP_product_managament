@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class CheckLogin
 {
@@ -16,7 +17,7 @@ class CheckLogin
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            return redirect()->route('show');
+            return redirect()->route('showProduct');
         }
         return $next($request);
     }
