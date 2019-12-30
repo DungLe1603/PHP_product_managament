@@ -26,7 +26,6 @@ class AddProductRequest extends FormRequest
         return [
             'name' => 'required|min:5',
             'category_id' => 'required',
-            'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ];
     }
