@@ -17,5 +17,13 @@ class ProductController extends Controller
         return view('show', compact('products', 'categories', 'images'));
     }
 
-    public function detail(){}
+    public function detail()
+    {
+    }
+
+    public function delete($id)
+    {
+        Product::destroy($id);
+        return redirect()->back();
+    }
 }
