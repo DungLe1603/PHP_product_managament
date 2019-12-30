@@ -6,10 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use Notifiable;
-    protected $table = "products";
-
     protected $fillable = [
-        'name', 'id_category',
+        'name', 'category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Image');
+    }
 }

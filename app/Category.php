@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use Notifiable;
-    protected $table = "categories";
+    protected $fillable = ['name'];
 
-    protected $fillable = [
-        'name',
-    ];
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
 }
