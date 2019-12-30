@@ -25,5 +25,5 @@
 		@endforeach
 	</tbody>
 </table>
-<button type="button" class="btn btn-outline-primary">Create</button>
+<a href="{{ route('add-product') }}" class="btn btn-outline-primary">Create</a>
 @endsection
