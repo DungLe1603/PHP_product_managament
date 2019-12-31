@@ -17,7 +17,7 @@ class ProductController extends Controller
         $images = Image::All();
         return view('show', compact('products', 'categories', 'images'));
     }
-
+  
     public function delete($id)
     {
         Product::destroy($id);

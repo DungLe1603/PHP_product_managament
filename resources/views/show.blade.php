@@ -8,21 +8,22 @@
 			<th>stt</th>
 			<th>Name</th>
 			<th>Category</th>
-			<th>Image</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
 	</thead>
 	<tbody>
+		@php
+			$stt = 1;
+		@endphp
 		@foreach($products as $product)
 		<tr>
-			<td> {{ $product->id }}</td>
+			<td> {{ $stt++ }}</td>
 			<td> {{ $product->name }}</td>
 			<td> {{ $product->category->name }}</td>
 			<td> 
 				<a href="{{ Route('detail-product',$product->id) }}"><i class="fas fa-eye"></i></a>
 			</td>
-			<td><a href=""><i class="fas fa-edit"></i></a></td>
 			<td><a href="{{ route('delete-product',$product->id ) }}"
 					onclick="return confirm('bạn chắc chắn muốn xóa')"><i class="fas fa-trash-alt"></i></a></td>
 		</tr>
