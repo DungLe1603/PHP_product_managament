@@ -7,6 +7,7 @@ use App\Http\Requests\AddProductRequest;
 use App\Product;
 use App\Category;
 use App\Image;
+use File;
 
 class ProductController extends Controller
 {
@@ -20,8 +21,16 @@ class ProductController extends Controller
   
     public function delete($id)
     {
-        Product::destroy($id);
-        return redirect()->back();
+        $product = Product::destroy($id);
+        Image::where('product_id', $id)->delete();
+        if (file_exists('upload/product/'.$id)) {
+            File::deleteDirectory(public_path('upload/product/'.$id));
+        }
+        if ($product) {
+            return redirect()->route('showProduct')->with('success', 'Delete product success');
+        } else {
+            return redirect()->route('showProduct')->withErrors('Update product error.');
+        }
     }
 
     public function create()
