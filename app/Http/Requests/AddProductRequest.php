@@ -25,8 +25,7 @@ class AddProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5',
-            'id_category' => 'required',
-            'images' => 'required',
+            'category_id' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ];
     }
@@ -34,11 +33,10 @@ class AddProductRequest extends FormRequest
     public function message()
     {
         return [
-            'name.required' => 'dien ten',
-            'name.min' => 'toi thieu 5 tu',
-            'images.required' => 'them anh',
-            'images.*.image' => 'hinh anh ko hop le',
-            'images.*.mimes' => 'duoi hinh anh ko hop le'
+            'required'=>':attribute Không được để trống',
+            'min' => ':attribute ko duoc it hon :min ky tu',
+            'image' => 'phai la hình ảnh',
+            'mimes' => 'phai dinh dang như sau:jpeg,png,jpg,gif'
         ];
     }
 }

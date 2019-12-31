@@ -21,4 +21,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckLogout'], function () {
     Route::get('/delete/{id}', 'ProductController@delete')->name('delete-product');
     Route::get('add', 'ProductController@create')->name('add-product');
     Route::post('add', 'ProductController@store');
+    Route::get('/detail/{id}', 'ProductController@detail')->name('detail-product');
+    Route::post('/detail/{id}', 'ProductController@update')->name('update-product');
 });
