@@ -30,7 +30,7 @@ class ProductController extends Controller
         return view('addproduct', compact('category'));
     }
 
-    public function store(Request $request)
+    public function store(AddProductRequest $request)
     {
         $product = Product::create($request->all());
         foreach ($request->images as $image) {
