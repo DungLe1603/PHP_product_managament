@@ -1,6 +1,7 @@
 @extends('master')
 @section('content')
 <h2>List Product</h2>
+<a href="{{ route('logout') }}"> logout</a>
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -20,12 +21,14 @@
 			<td> {{ $stt++ }}</td>
 			<td> {{ $product->name }}</td>
 			<td> {{ $product->category->name }}</td>
-			<td><a href=""><i class="fas fa-edit"></i></a></td>
-			<td><a href=""><i class="fas fa-trash-alt"></i></a></td>
-			
+			<td> 
+				<a href="{{ Route('detail-product',$product->id) }}"><i class="fas fa-eye"></i></a>
+			</td>
+			<td><a href="{{ route('delete-product',$product->id ) }}"
+					onclick="return confirm('bạn chắc chắn muốn xóa')"><i class="fas fa-trash-alt"></i></a></td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
-<button type="button" class="btn btn-outline-primary">Create</button>
+<a href="{{ route('add-product') }}" class="btn btn-outline-primary">Create</a>
 @endsection
