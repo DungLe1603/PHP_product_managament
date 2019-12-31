@@ -17,5 +17,7 @@ class ProductController extends Controller
         return view('show', compact('products', 'categories', 'images'));
     }
 
-    public function detail(){}
+    public function detail()
+    {
+    }
 }
