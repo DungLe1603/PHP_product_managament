@@ -1,5 +1,12 @@
 @extends('master')
 @section('content')
+@if(session('success'))
+	<div class="alert alert-success alert-dismissible">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		<h4><i class="icon fa fa-check"></i> Notification</h4>
+		{{session('success')}}
+	</div>
+@endif
 <h2>List Product</h2>
 <a href="{{ route('logout') }}"> logout</a>
 <table class="table table-bordered">

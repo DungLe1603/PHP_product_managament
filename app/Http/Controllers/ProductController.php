@@ -48,14 +48,18 @@ class ProductController extends Controller
                 ]);
             }
         }
-        return redirect()->route('showProduct');
+        if ($product) {
+            return redirect()->route('showProduct')->with('success', 'Create product '.$product->name.' success');
+        } else {
+            return redirect()->route('showProduct')->withErrors('Update product error.');
+        }
     }
 
     public function detail($id)
     {
         $product = Product::find($id);
         $categories = Category::All();
-        $images = Image::All();
+        $images = Product::find($id)->images;
         return view('detail', compact('product', 'categories', 'images'));
     }
 
@@ -63,13 +67,14 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $product = Product::findOrFail($id);
-        $product->update($data);
         $time =  date('Y-m-d H:i:s');
         if (!empty($data['Dimages'])) {
             foreach ($data['Dimages'] as $del) {
                 $image = Image::findOrFail($del);
                 $image->delete();
-                unlink('upload/product/'.$id.'/'.$image->name);
+                if (file_exists('upload/product/'.$id.'/'.$image->name)) {
+                    unlink('upload/product/'.$id.'/'.$image->name);
+                }
             }
         }
         if ($request->hasfile('images')) {
@@ -86,6 +91,10 @@ class ProductController extends Controller
                 ]);
             }
         }
-        return redirect()->back();
+        if ($product->update($data)) {
+            return redirect()->route('showProduct')->with('success', 'Update product '.$product->name.' success');
+        } else {
+            return redirect()->route('showProduct')->withErrors('Update product error.');
+        }
     }
 }
