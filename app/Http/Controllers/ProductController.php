@@ -30,15 +30,23 @@ class ProductController extends Controller
         return view('addproduct', compact('category'));
     }
 
-    public function store(Request $request)
+    public function store(AddProductRequest $request)
     {
         $product = Product::create($request->all());
-        foreach ($request->images as $image) {
-            $image->storeAs('public/images', $image->getClientOriginalName());
-            Image::create([
-                'product_id' => $product->id,
-                'name' => $image->getClientOriginalName()
-            ]);
+        $time =  date('Y-m-d H:i:s');
+        if ($request->hasfile('images')) {
+            foreach ($request->images as $image) {
+                $name = strtotime($time)."_".$image->getClientOriginalName();
+                if (!file_exists('upload/product/'.$product->id)) {
+                    mkdir('upload/product/'.$product->id, 0777, true);
+                }
+                $path = 'upload/product/'.$product->id;
+                $image->move($path, $name);
+                Image::create([
+                    'product_id' => $product->id,
+                    'name' => $name
+                ]);
+            }
         }
         return redirect()->route('showProduct');
     }
