@@ -59,7 +59,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $categories = Category::All();
-        $images = Image::All();
+        $images = Product::find($id)->images;
         return view('detail', compact('product', 'categories', 'images'));
     }
 
@@ -72,7 +72,9 @@ class ProductController extends Controller
             foreach ($data['Dimages'] as $del) {
                 $image = Image::findOrFail($del);
                 $image->delete();
-                unlink('upload/product/'.$id.'/'.$image->name);
+                if (file_exists('upload/product/'.$id.'/'.$image->name)) {
+                    unlink('upload/product/'.$id.'/'.$image->name);
+                }
             }
         }
         if ($request->hasfile('images')) {
