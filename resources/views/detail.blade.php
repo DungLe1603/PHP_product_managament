@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <p>Choose the image to delete</p>
                     @foreach($images as $image)
-                        <img src="{{URL::to('/upload/product/'.$product->id.'/'.$image->name)}}" class="rounded">
+                        <img width="300px" src="{{URL::to('/upload/product/'.$product->id.'/'.$image->name)}}" class="rounded">
                         <input type="checkbox" class="form-check-input" value="{{$image->id}}" name="Dimages[]">
                     @endforeach   
                 </div>
