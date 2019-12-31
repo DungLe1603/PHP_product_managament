@@ -1,6 +1,7 @@
 @extends('master')
 @section('content')
 <h2>List Product</h2>
+<a href="{{ route('logout') }}"> logout</a>
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -20,7 +21,8 @@
 			<td> {{ $product->category->name }}</td>
 			<td> {{ $product->image }}</td>
 			<td><a href=""><i class="fas fa-edit"></i></a></td>
-			<td><a href="{{ route('delete-product',$product->id ) }}" onclick="return confirm('bạn chắc chắn muốn xóa')"><i class="fas fa-trash-alt"></i></a></td>
+			<td><a href="{{ route('delete-product',$product->id ) }}"
+					onclick="return confirm('bạn chắc chắn muốn xóa')"><i class="fas fa-trash-alt"></i></a></td>
 		</tr>
 		@endforeach
 	</tbody>
