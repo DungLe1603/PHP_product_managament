@@ -14,25 +14,25 @@ class ProductTableSeeder extends Seeder
         DB::table('products')->insert([
             [
                 'name' => 'iphone5',
-                'id_category' => 3,
+                'category_id' => 3,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ],
             [
                 'name' => 'oppo f1',
-                'id_category' => 2,
+                'category_id' => 2,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ],
             [
                 'name' => 'lumia520',
-                'id_category' => 4,
+                'category_id' => 4,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ],
             [
                 'name' => 'node6',
-                'id_category' => '1',
+                'category_id' => '1',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ]
